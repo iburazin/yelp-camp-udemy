@@ -38,12 +38,20 @@
         <div class="form-file custom-file">
           <input type="file" class="form-file-input" id="image" name="image" multiple />
           <label class="form-file-label" for="image">
-            <span class="form-file-text custom-file-label">Add more image(s)...</span>
+            <span class="form-file-text custom-file-label text-muted">Add more image(s)...</span>
             <span class="form-file-button">Browse</span>
           </label>
         </div>
       </div>
-
+      <div class="mb-3">
+        <% campground.images.forEach((img,i) => { %>
+        <img src="<%= img.thumbnail %> " class="img-thumbnail" alt="" />
+        <div class="form-check-inline">
+          <input type="checkbox" name="deleteImages[]" value="<%= img.filename %>" id="image-<%= i %>" />
+        </div>
+        <label for="image-<%= i %>">Delete</label>
+        <% }) %>
+      </div>
       <div class="mb-3">
         <button class="btn btn-success">Update Campground</button>
       </div>
